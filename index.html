@@ -86,6 +86,78 @@
   <h1>Checklist <span>WICI3</span> — Hire Brazil</h1>
   <p class="sub">Workshop de Carreira Internacional · tráfego começa 13/07. Marque, edite, adicione responsável e prazo — salva sozinho no seu navegador.</p>
 
+  <!-- ── Panorama Geral (status por frente) ── -->
+  <style>
+    .pano-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    @media (max-width:680px){ .pano-grid{ grid-template-columns:1fr; } }
+    .pcard{ background:var(--card); border:1px solid var(--line); border-left:3px solid var(--muted); border-radius:12px; padding:14px 16px; }
+    .pcard .ph{ display:flex; align-items:center; gap:9px; margin-bottom:8px; }
+    .pcard .pt{ font-weight:800; font-size:.98rem; flex:1; }
+    .pbadge{ font-size:.58rem; font-weight:800; text-transform:uppercase; letter-spacing:.04em; padding:3px 9px; border-radius:20px; white-space:nowrap; }
+    .ptxt{ font-size:.86rem; color:var(--soft); line-height:1.5; margin-bottom:9px; }
+    .pnums{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:9px; }
+    .pnum{ background:#0d1730; border:1px solid var(--line); border-radius:8px; padding:5px 11px; }
+    .pnum b{ display:block; font-size:1rem; font-weight:800; line-height:1.2; }
+    .pnum span{ font-size:.56rem; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); }
+    .pnext{ font-size:.78rem; border-radius:7px; padding:7px 10px; line-height:1.45; }
+    .s-ok{ border-left-color:var(--good); } .s-ok .pbadge{ background:rgba(56,224,166,.16); color:var(--good); } .s-ok .pnext{ background:rgba(56,224,166,.09); color:#9ff0d3; }
+    .s-warn{ border-left-color:var(--warn); } .s-warn .pbadge{ background:rgba(255,184,77,.16); color:var(--warn); } .s-warn .pnext{ background:rgba(255,184,77,.09); color:#ffdca0; }
+    .s-bad{ border-left-color:var(--crit); } .s-bad .pbadge{ background:rgba(255,93,115,.16); color:var(--crit); } .s-bad .pnext{ background:rgba(255,93,115,.09); color:#ffbcc5; }
+    .s-pause{ border-left-color:var(--accent); } .s-pause .pbadge{ background:rgba(124,92,255,.18); color:var(--accent-soft); } .s-pause .pnext{ background:rgba(124,92,255,.1); color:var(--accent-soft); }
+    .pano-ask{ background:linear-gradient(100deg,rgba(124,92,255,.14),transparent); border:1px solid #33285e; border-radius:12px; padding:14px 16px; margin-top:12px; }
+    .pano-ask b{ color:#fff; } .pano-ask ul{ margin:6px 0 0; padding-left:18px; } .pano-ask li{ font-size:.87rem; color:var(--soft); line-height:1.7; }
+  </style>
+  <div class="sec">
+    <div class="sec-title">📋 Panorama Geral · Status por Frente</div>
+    <div class="pano-grid">
+
+      <div class="pcard s-warn">
+        <div class="ph"><span>📱</span><span class="pt">Seguidores · Malu</span><span class="pbadge">Testando público</span></div>
+        <div class="ptxt">Começou forte e depois <b>perdeu ritmo</b>. Rodando <b>variações de público</b> pra reencontrar a captação eficiente.</div>
+        <div class="pnext">▸ Próximo passo: reforçar o impulsionamento com <b>mais posts</b>.</div>
+      </div>
+
+      <div class="pcard s-pause">
+        <div class="ph"><span>📸</span><span class="pt">Seguidores · IG Hire</span><span class="pbadge">Pausado → pivô nativo</span></div>
+        <div class="ptxt">Captou bem na <b>1ª semana</b> e depois <b>zerou</b>. Suporte da Meta indicou possível instabilidade; testamos mais dias, reduzimos posts e aumentamos verba — <b>sem sucesso</b>.</div>
+        <div class="pnext">▸ Decisão: pausamos e subimos uma <b>campanha nativa</b> — outro formato, que também entrega resultado.</div>
+      </div>
+
+      <div class="pcard s-ok">
+        <div class="ph"><span>🎥</span><span class="pt">YouTube · Malu</span><span class="pbadge">Ótimo custo · 🔑 acesso</span></div>
+        <div class="pnums"><div class="pnum"><b>1.015</b><span>inscritos · 01–06/07</span></div><div class="pnum"><b>R$ 0,36</b><span>custo / inscrito</span></div></div>
+        <div class="pnext">▸ Pendência: <b>acesso ao canal</b> (pegar na reunião) pra conectar o Analytics na dashboard.</div>
+      </div>
+
+      <div class="pcard s-bad">
+        <div class="ph"><span>🌐</span><span class="pt">Site · Google Ads</span><span class="pbadge">Reavaliar</span></div>
+        <div class="pnums"><div class="pnum"><b>~R$ 60</b><span>investido</span></div><div class="pnum"><b>0</b><span>leads</span></div></div>
+        <div class="ptxt"><b>Perdendo muitos leilões por orçamento</b>. Hoje só as palavras <b>HIRE</b> e <b>HIRE Internacional</b> — na campanha antiga tínhamos bem mais.</div>
+        <div class="pnext">▸ Decidir: (1) mantém ativo? (2) reabrir palavras-chave? (3) direcionamento / verba?</div>
+      </div>
+
+      <div class="pcard s-warn">
+        <div class="ph"><span>📕</span><span class="pt">Ebook · 7 Erros</span><span class="pbadge">Bom CPL · sem venda</span></div>
+        <div class="ptxt"><b>Bom custo por lead</b> (quase o mesmo da outra conta). Ainda <b>sem venda</b> neste mês.</div>
+        <div class="pnext">▸ Precisamos do <b>feedback de qualidade</b> dos leads.</div>
+      </div>
+
+      <div class="pcard s-ok">
+        <div class="ph"><span>📗</span><span class="pt">Ebook · Carreira Remota</span><span class="pbadge">Destaque</span></div>
+        <div class="ptxt"><b>Ótimo preço</b>, bom <b>volume de leads</b> e <b>2 vendas</b> — o melhor da esteira.</div>
+        <div class="pnext">▸ Também queremos o <b>feedback de qualidade</b> dos leads.</div>
+      </div>
+
+    </div>
+    <div class="pano-ask"><b>🤝 O que precisamos de vocês (Hire):</b>
+      <ul>
+        <li><b>Acesso ao canal do YouTube</b> da Malu (pra ligar o Analytics na dash).</li>
+        <li><b>Feedback da qualidade dos leads</b> — Ebook 7 Erros e Carreira Remota.</li>
+        <li><b>Site:</b> decisão de manter ativo, reabrir palavras-chave e direcionamento.</li>
+      </ul>
+    </div>
+  </div>
+
   <div class="progwrap">
     <div class="progtxt"><span id="pcount">0</span>/<span id="ptotal">0</span> <small>concluídos</small></div>
     <div class="progbar"><div class="progfill" id="pfill"></div></div>
