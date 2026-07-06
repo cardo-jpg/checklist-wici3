@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checklist de Lançamento — WICI3 · Hire Brazil</title>
+<style>
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  :root{
+    --bg:#0b1120; --bg2:#0f1830; --card:#131f38; --line:#243352;
+    --text:#eaf0fb; --muted:#93a3c4; --soft:#c3cee4;
+    --accent:#7c5cff; --accent2:#a855f7; --accent-soft:#b8a6ff;
+    --good:#38e0a6; --crit:#ff5d73; --warn:#ffb84d;
+  }
+  html{ font-size:16px; }
+  body{
+    background:radial-gradient(1100px 650px at 82% -10%, #1a2447 0%, transparent 60%),
+               radial-gradient(800px 550px at -10% 15%, #17204a 0%, transparent 55%), var(--bg);
+    color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;
+    line-height:1.5; -webkit-font-smoothing:antialiased; padding:40px 18px 80px;
+  }
+  .wrap{ max-width:880px; margin:0 auto; }
+  .brand{ font-size:.72rem; letter-spacing:.26em; font-weight:800; color:var(--accent-soft); text-transform:uppercase; }
+  h1{ font-size:2.1rem; font-weight:800; letter-spacing:-.02em; margin:10px 0 4px; }
+  h1 span{ background:linear-gradient(100deg,var(--accent),var(--accent2)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .sub{ color:var(--muted); font-size:.95rem; }
+
+  /* progress */
+  .progwrap{ margin:24px 0 8px; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 18px; display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+  .progbar{ flex:1; min-width:180px; height:10px; background:#0d1730; border-radius:99px; overflow:hidden; border:1px solid var(--line); }
+  .progfill{ height:100%; width:0%; background:linear-gradient(90deg,var(--accent),var(--good)); transition:width .3s; }
+  .progtxt{ font-weight:800; font-size:.95rem; white-space:nowrap; }
+  .progtxt small{ color:var(--muted); font-weight:600; }
+  .toolbar{ display:flex; gap:8px; }
+  .tbtn{ background:var(--card); border:1px solid var(--line); color:var(--soft); border-radius:9px; padding:7px 13px; font-size:.82rem; font-weight:700; cursor:pointer; transition:all .15s; font-family:inherit; }
+  .tbtn:hover{ border-color:var(--accent); color:#fff; }
+  .saved{ font-size:.78rem; color:var(--muted); }
+
+  /* section */
+  .sec{ margin-top:26px; }
+  .sec-title{ font-size:.78rem; letter-spacing:.14em; font-weight:800; color:var(--accent-soft); text-transform:uppercase; margin-bottom:12px; display:flex; align-items:center; gap:10px; }
+  .sec-title::after{ content:''; flex:1; height:1px; background:var(--line); }
+
+  .callout{ border-radius:12px; padding:14px 16px; font-size:.9rem; margin-bottom:12px; }
+  .callout.info{ background:linear-gradient(100deg,rgba(124,92,255,.14),transparent); border:1px solid #33285e; color:var(--soft); }
+  .callout.alert{ background:linear-gradient(100deg,rgba(255,93,115,.13),transparent); border:1px solid #5e2a34; color:#ffd6dc; }
+  .callout b{ color:#fff; }
+
+  /* item row */
+  .items{ display:flex; flex-direction:column; gap:8px; }
+  .row{ display:grid; grid-template-columns:26px 1fr 150px 120px 26px; gap:10px; align-items:center;
+        background:var(--card); border:1px solid var(--line); border-radius:11px; padding:11px 13px; position:relative; }
+  .row.crit{ border-left:3px solid var(--crit); }
+  .row.q{ border-left:3px solid var(--warn); }
+  .row.done{ opacity:.55; }
+  .cbx{ appearance:none; width:20px; height:20px; border:2px solid var(--muted); border-radius:6px; cursor:pointer; position:relative; transition:all .15s; flex-shrink:0; }
+  .cbx:checked{ background:var(--good); border-color:var(--good); }
+  .cbx:checked::after{ content:'✓'; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:#0b1120; font-weight:900; font-size:.8rem; }
+  .lbl{ font-size:.94rem; color:var(--text); outline:none; border-radius:5px; padding:2px 4px; }
+  .lbl:focus{ background:#0d1730; box-shadow:0 0 0 1px var(--accent); }
+  .row.done .lbl{ text-decoration:line-through; color:var(--muted); }
+  .pill{ font-size:.58rem; font-weight:800; letter-spacing:.05em; padding:2px 6px; border-radius:5px; margin-right:6px; vertical-align:middle; text-transform:uppercase; }
+  .pill.crit{ background:rgba(255,93,115,.18); color:var(--crit); }
+  .pill.q{ background:rgba(255,184,77,.18); color:var(--warn); }
+  .fin{ background:#0d1730; border:1px solid var(--line); border-radius:7px; color:var(--soft); padding:6px 9px; font-size:.8rem; font-family:inherit; outline:none; width:100%; transition:border-color .15s; }
+  .fin:focus{ border-color:var(--accent); }
+  .fin::placeholder{ color:#5a6c8f; }
+  .del{ background:none; border:none; color:#5a6c8f; font-size:1.1rem; cursor:pointer; line-height:1; transition:color .15s; }
+  .del:hover{ color:var(--crit); }
+  .additem{ background:none; border:1px dashed var(--line); color:var(--muted); border-radius:9px; padding:9px; font-size:.82rem; font-weight:700; cursor:pointer; margin-top:8px; width:100%; transition:all .15s; font-family:inherit; }
+  .additem:hover{ border-color:var(--accent); color:var(--accent-soft); }
+
+  .foot{ margin-top:40px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:.82rem; text-align:center; }
+
+  @media (max-width:680px){
+    .row{ grid-template-columns:24px 1fr 24px; grid-template-areas:'c l d' '. r r' '. p p'; row-gap:8px; }
+    .row .cbx{ grid-area:c; } .row .lbl{ grid-area:l; } .row .del{ grid-area:d; }
+    .row .f-resp{ grid-area:r; } .row .f-prazo{ grid-area:p; }
+    .fin{ width:100%; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">Cardô Marketing · Lançamento</div>
+  <h1>Checklist <span>WICI3</span> — Hire Brazil</h1>
+  <p class="sub">Workshop de Carreira Internacional · tráfego começa 13/07. Marque, edite, adicione responsável e prazo — salva sozinho no seu navegador.</p>
+
+  <div class="progwrap">
+    <div class="progtxt"><span id="pcount">0</span>/<span id="ptotal">0</span> <small>concluídos</small></div>
+    <div class="progbar"><div class="progfill" id="pfill"></div></div>
+    <span class="progtxt" id="ppct">0%</span>
+    <div class="toolbar">
+      <button class="tbtn" onclick="window.print()">🖨️ PDF</button>
+      <button class="tbtn" onclick="resetAll()">↺ Limpar</button>
+    </div>
+  </div>
+  <div class="saved" id="savedNote">&nbsp;</div>
+
+  <div id="app"></div>
+
+  <div class="foot">Cardô Marketing · checklist editável — os dados ficam salvos só neste navegador.</div>
+</div>
+
+<script>
+const SECTIONS = [
+  { id:'estrategia', title:'1 · Estratégia & Definições',
+    info:'📌 <b>Referência WICI jan/26:</b> 715 ingressos pagos · CPV R$86,66 · ~50% comparecimento · ROAS 11x · R$799k de faturamento',
+    items:[
+      {id:'e1', text:'Doc da estratégia da nova edição (WICI3)', tag:'crit'},
+      {id:'e2', text:'Verba total definida', tag:'crit'},
+      {id:'e3', text:'Metas: ingressos · CPV · % comparecimento · vendas de mentoria · ROAS', tag:'crit'},
+      {id:'e4', text:'Datas travadas: tráfego 13/07 · evento (2 dias, 9h–15h) · abertura/fechamento de carrinho · replay', tag:'crit'},
+    ]},
+  { id:'oferta', title:'2 · Oferta',
+    items:[
+      {id:'o0', text:'DECIDIR: vai ter order bump igual no outro?', tag:'q'},
+      {id:'o1', text:'Estrutura de lotes do ingresso (Lote 0→3, Start/VIP — igual antes)', tag:'crit'},
+      {id:'o2', text:'Oferta da Mentoria Moeda Forte (R$2.497): preço · bônus · garantia · parcelamento — pitch do Dia 2 (~14h)', tag:'crit'},
+      {id:'o3', text:'Downsell / mentoria tráfego (teve no anterior)', tag:''},
+    ]},
+  { id:'trafego', title:'3 · Conta & Tráfego (Meta)',
+    alert:'⚠️ <b>Conta de anúncios NOVA / "cega":</b> mesmo com a base sendo BR, a conta nunca rodou anúncios — não tem pixel treinado nem histórico. Nos primeiros dias o algoritmo aprende do zero, então o <b>CPV/CPA vem mais alto</b>. Foco em <b>derrubar o CPA</b>: começar com criativos já validados, deixar o pixel aprender antes de escalar e não entrar em pânico com custo alto nos primeiros 3–4 dias.',
+    items:[
+      {id:'t1', text:'Estrutura de campanha (captação de ingresso) + UTM por canal (igual antes)', tag:''},
+    ]},
+  { id:'pagina', title:'4 · Página & Criativos',
+    items:[
+      {id:'p1', text:'Página de venda do ingresso', tag:'crit'},
+      {id:'p2', text:'Criativos de captação de ingresso — 💡 começar só com o que deu certo no outro', tag:'crit'},
+    ]},
+  { id:'checkout', title:'5 · Checkout & Evento',
+    items:[
+      {id:'c1', text:'Gateway (Greenn) com PIX + cartão + boleto', tag:'crit'},
+      {id:'c2', text:'Plataforma do ao vivo', tag:'crit'},
+    ]},
+];
+
+const KEY = 'wici3_checklist_v1';
+let state = load();
+function load(){ try{ return JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){ return {}; } }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); flashSaved(); }catch(e){} }
+function st(id){ state[id] = state[id] || {}; return state[id]; }
+
+let savedTimer;
+function flashSaved(){
+  const n = document.getElementById('savedNote');
+  n.textContent = '✓ salvo';
+  clearTimeout(savedTimer);
+  savedTimer = setTimeout(()=>{ n.innerHTML='&nbsp;'; }, 1200);
+}
+
+function render(){
+  const app = document.getElementById('app');
+  app.innerHTML = '';
+  for (const sec of SECTIONS){
+    const secEl = document.createElement('div');
+    secEl.className = 'sec';
+    secEl.innerHTML = `<div class="sec-title">${sec.title}</div>`;
+    if (sec.alert) secEl.innerHTML += `<div class="callout alert">${sec.alert}</div>`;
+    if (sec.info)  secEl.innerHTML += `<div class="callout info">${sec.info}</div>`;
+    const box = document.createElement('div'); box.className = 'items';
+    // base items (menos os removidos) + extras
+    const removed = (st('__removed').list) || [];
+    const baseItems = sec.items.filter(it => !removed.includes(it.id));
+    const extras = (st('__extra_'+sec.id).list) || [];
+    for (const it of baseItems) box.appendChild(makeRow(it));
+    for (const it of extras)   box.appendChild(makeRow({...it, extra:true, sec:sec.id}));
+    secEl.appendChild(box);
+    const add = document.createElement('button');
+    add.className = 'additem'; add.textContent = '+ adicionar item';
+    add.onclick = ()=> addItem(sec.id, box);
+    secEl.appendChild(add);
+    app.appendChild(secEl);
+  }
+  updateProgress();
+}
+
+function makeRow(it){
+  const s = st(it.id);
+  const row = document.createElement('div');
+  row.className = 'row' + (it.tag ? ' '+it.tag : '') + (s.done ? ' done' : '');
+  row.dataset.id = it.id;
+
+  const cbx = document.createElement('input');
+  cbx.type='checkbox'; cbx.className='cbx'; cbx.checked = !!s.done;
+  cbx.onchange = ()=>{ st(it.id).done = cbx.checked; row.classList.toggle('done', cbx.checked); save(); updateProgress(); };
+
+  const lbl = document.createElement('div');
+  lbl.className='lbl'; lbl.contentEditable='true'; lbl.spellcheck=false;
+  const pill = it.tag==='crit' ? '<span class="pill crit">crítico</span>' : (it.tag==='q' ? '<span class="pill q">decidir</span>' : '');
+  lbl.innerHTML = pill + '<span class="txt"></span>';
+  lbl.querySelector('.txt').textContent = (s.text != null ? s.text : it.text);
+  lbl.querySelector('.txt').addEventListener('input', ()=>{ st(it.id).text = lbl.querySelector('.txt').textContent; save(); });
+
+  const resp = document.createElement('input');
+  resp.className='fin f-resp'; resp.placeholder='Responsável'; resp.value = s.resp || '';
+  resp.oninput = ()=>{ st(it.id).resp = resp.value; save(); };
+
+  const prazo = document.createElement('input');
+  prazo.className='fin f-prazo'; prazo.placeholder='Prazo'; prazo.value = s.prazo || '';
+  prazo.oninput = ()=>{ st(it.id).prazo = prazo.value; save(); };
+
+  const del = document.createElement('button');
+  del.className='del'; del.title='remover'; del.textContent='×';
+  del.onclick = ()=> removeItem(it, row);
+
+  row.append(cbx, lbl, resp, prazo, del);
+  return row;
+}
+
+function addItem(secId, box){
+  const id = 'x_' + Date.now();
+  const key = '__extra_'+secId;
+  st(key).list = (st(key).list || []).concat([{id, text:''}]);
+  save();
+  const row = makeRow({id, text:'', extra:true, sec:secId});
+  box.appendChild(row);
+  row.querySelector('.txt').focus();
+  updateProgress();
+}
+
+function removeItem(it, row){
+  if (it.extra){
+    const key='__extra_'+it.sec;
+    st(key).list = (st(key).list||[]).filter(x=>x.id!==it.id);
+  } else {
+    st('__removed').list = (st('__removed').list||[]).concat([it.id]);
+  }
+  delete state[it.id];
+  save();
+  row.remove();
+  updateProgress();
+}
+
+function updateProgress(){
+  const boxes = document.querySelectorAll('.cbx');
+  const total = boxes.length;
+  let done = 0; boxes.forEach(b=>{ if(b.checked) done++; });
+  const pct = total ? Math.round(done/total*100) : 0;
+  document.getElementById('pcount').textContent = done;
+  document.getElementById('ptotal').textContent = total;
+  document.getElementById('ppct').textContent = pct + '%';
+  document.getElementById('pfill').style.width = pct + '%';
+}
+
+function resetAll(){
+  if (!confirm('Limpar todas as marcações, textos e itens adicionados? Isso não pode ser desfeito.')) return;
+  state = {}; localStorage.removeItem(KEY); render();
+}
+
+render();
+</script>
+</body>
+</html>
