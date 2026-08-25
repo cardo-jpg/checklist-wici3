@@ -78,29 +78,6 @@
     .row .f-resp{ grid-area:r; } .row .f-prazo{ grid-area:p; }
     .fin{ width:100%; }
   }
-
-  /* abas */
-  .tabsnav{ display:flex; gap:6px; margin:22px 0 6px; border-bottom:1px solid var(--line); flex-wrap:wrap; }
-  .tabbtn{ background:none; border:none; border-bottom:2px solid transparent; color:var(--muted); font-weight:800; font-size:.92rem; padding:10px 15px; cursor:pointer; font-family:inherit; transition:all .15s; }
-  .tabbtn:hover{ color:var(--soft); }
-  .tabbtn.active{ color:#fff; border-bottom-color:var(--accent); }
-  .tabpanel[hidden]{ display:none; }
-
-  /* aba reconhecimento */
-  .rlist{ display:flex; flex-direction:column; gap:10px; }
-  .ritem{ display:flex; gap:12px; align-items:flex-start; background:var(--card); border:1px solid var(--line); border-radius:11px; padding:12px 14px; }
-  .ritem .rnn{ flex:0 0 auto; width:26px; height:26px; border-radius:8px; background:linear-gradient(120deg,var(--accent),var(--accent2)); color:#fff; font-weight:800; display:flex; align-items:center; justify-content:center; font-size:.85rem; }
-  .ritem .rt{ font-size:.9rem; color:var(--soft); }
-  .scards{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-top:2px; }
-  @media (max-width:680px){ .scards{ grid-template-columns:1fr; } }
-  .scard{ background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; text-align:center; position:relative; }
-  .scard.reco{ border-color:var(--accent); box-shadow:0 0 0 1px var(--accent) inset; }
-  .scard .sc-t{ font-size:.66rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); font-weight:800; }
-  .scard.reco .sc-t{ color:var(--accent-soft); }
-  .scard .sc-v{ font-size:1.55rem; font-weight:800; margin:6px 0 2px; }
-  .scard .sc-v small{ font-size:.8rem; color:var(--muted); font-weight:700; }
-  .scard .sc-s{ font-size:.8rem; color:var(--soft); }
-  .scard .sc-b{ font-size:.74rem; color:var(--good); margin-top:9px; font-weight:800; }
 </style>
 </head>
 <body>
@@ -108,13 +85,6 @@
   <div class="brand">Cardô Marketing · Lançamento</div>
   <h1>Checklist <span>WICI3</span> — Hire Brazil</h1>
   <p class="sub">Workshop de Carreira Internacional · tráfego começa 13/07. Marque, edite, adicione responsável e prazo — salva sozinho no seu navegador.</p>
-
-  <div class="tabsnav">
-    <button class="tabbtn active" data-t="checklist" onclick="showTab(this)">✅ Checklist</button>
-    <button class="tabbtn" data-t="recon" onclick="showTab(this)">📣 Reconhecimento</button>
-  </div>
-
-  <div id="tab-checklist" class="tabpanel">
 
   <!-- ── Panorama Geral (status por frente) ── -->
   <style>
@@ -200,66 +170,11 @@
   <div class="saved" id="savedNote">&nbsp;</div>
 
   <div id="app"></div>
-  </div><!-- /tab-checklist -->
-
-  <div id="tab-recon" class="tabpanel" hidden>
-    <div class="sec">
-      <div class="sec-title">📣 Fase 0 · Campanha de Reconhecimento</div>
-      <div class="callout info">Antes de captar e vender, a gente <b>aquece</b>. A campanha de reconhecimento roda em <b>setembro</b> — e o timing é o pulo do gato: construir audiência <b>enquanto a mídia é barata</b>, pra colher quando ela fica cara (eleição em out, Black Friday em nov).</div>
-      <div class="pano-grid" style="grid-template-columns:1fr 1fr 1fr">
-        <div class="pcard s-ok">
-          <div class="ph"><span>🟢</span><span class="pt">Setembro</span><span class="pbadge">CPM barato ↓</span></div>
-          <div class="ptxt"><b>Reconhecimento.</b> A mídia mais barata da janela inteira. Constrói o público quente.</div>
-        </div>
-        <div class="pcard s-warn">
-          <div class="ph"><span>🟡</span><span class="pt">Outubro</span><span class="pbadge">CPM caro · eleição</span></div>
-          <div class="ptxt"><b>Captação.</b> Leads a partir de <b>26/10</b>, já sobre público aquecido → CPL menor.</div>
-        </div>
-        <div class="pcard s-bad">
-          <div class="ph"><span>🔴</span><span class="pt">Novembro</span><span class="pbadge">CPM caríssimo · BF</span></div>
-          <div class="ptxt"><b>Evento + venda.</b> Evento <b>21–22/11</b>, carrinho no domingo 22 e Black Friday 27.</div>
-        </div>
-      </div>
-      <p class="sub" style="margin-top:12px">A lógica é uma só: <b style="color:#fff">construir audiência quando a mídia está barata (setembro) pra colher quando ela está cara (out/nov)</b>. Cada real gasto agora rende muito mais alcance do que renderá no meio da eleição ou da Black Friday.</p>
-    </div>
-
-    <div class="sec">
-      <div class="sec-title">O que faz — e o que NÃO faz</div>
-      <div class="callout info"><b>Reconhecimento não vende.</b> O objetivo de mídia é alcance/vídeo (CPM baixo) e o entregável são os <b>públicos de retargeting</b> — quem viu os vídeos, engajou e visitou o perfil. É o combustível barato que a captação e a venda vão queimar depois. Três ângulos de conteúdo:</div>
-      <div class="rlist">
-        <div class="ritem"><span class="rnn">1</span><span class="rt"><b>Autoridade da Malu</b> — quem é, por que confiar, o resultado que ela gera.</span></div>
-        <div class="ritem"><span class="rnn">2</span><span class="rt"><b>Prova social</b> — a transformação de alunos do último workshop (o sonho da carreira internacional).</span></div>
-        <div class="ritem"><span class="rnn">3</span><span class="rt"><b>Dor &amp; desejo do público</b> — conteúdo de identificação, que gera salvamento e compartilhamento.</span></div>
-      </div>
-      <div class="pnums" style="margin-top:14px">
-        <div class="pnum"><b>Alcance · CPM</b><span>meta de mídia (não é venda)</span></div>
-        <div class="pnum"><b>Freq. 1,5–2</b><span>frequência controlada</span></div>
-        <div class="pnum"><b>Público quente</b><span>entregável p/ retargeting</span></div>
-      </div>
-    </div>
-
-    <div class="sec">
-      <div class="sec-title">💰 Investimento de setembro · cenários</div>
-      <div class="callout info">Topo é barato — dá pra construir muito com pouco. Não soma "por cima" do orçamento: é a Fase 0 que <b>derruba o CAC</b> das fases seguintes. Números a validar na reunião; fecho com o CPM real dos primeiros dias.</div>
-      <div class="scards">
-        <div class="scard"><div class="sc-t">Enxuto</div><div class="sc-v">R$ 40<small>/dia</small></div><div class="sc-s">~R$ 1,2k no mês</div><div class="sc-b">~20 mil no público quente</div></div>
-        <div class="scard reco"><div class="sc-t">★ Recomendado</div><div class="sc-v">R$ 70<small>/dia</small></div><div class="sc-s">~R$ 2,1k no mês</div><div class="sc-b">~35 mil no público quente</div></div>
-        <div class="scard"><div class="sc-t">Agressivo</div><div class="sc-v">R$ 120<small>/dia</small></div><div class="sc-s">~R$ 3,6k no mês</div><div class="sc-b">~55 mil no público quente</div></div>
-      </div>
-      <div class="callout alert" style="margin-top:14px"><b>⚠️ Ressalva:</b> a Fase 0 potencializa o lançamento, mas o gargalo continua sendo o <b>back-end (Mentoria Moeda Forte) convertendo</b> — hoje 0 venda. Não adianta encher o topo se a venda de trás não fecha. Prioridade em paralelo.</div>
-    </div>
-  </div><!-- /tab-recon -->
 
   <div class="foot">Cardô Marketing · checklist editável — os dados ficam salvos só neste navegador.</div>
 </div>
 
 <script>
-function showTab(btn){
-  document.querySelectorAll('.tabbtn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  const t=btn.dataset.t;
-  document.querySelectorAll('.tabpanel').forEach(p=>{ p.hidden = (p.id!=='tab-'+t); });
-}
 const SECTIONS = [
   { id:'estrategia', title:'1 · Estratégia & Definições',
     info:'📌 <b>Referência WICI jan/26:</b> 715 ingressos pagos · CPV R$86,66 · ~50% comparecimento · ROAS 11x · R$799k de faturamento',
